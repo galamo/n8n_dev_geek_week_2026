@@ -1,1 +1,1 @@
-# n8n Dev Geek Week 2026
+# n8n DevGeekWeek 2026
