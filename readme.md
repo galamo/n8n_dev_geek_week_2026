@@ -5,7 +5,7 @@ Self-hosted n8n with Docker Compose and PostgreSQL (or MySQL).
 ## Openrouter
 
 - https://openrouter.ai/
-https://docs.google.com/document/d/1Kl6EUQ7HygLLIfQ08IYwd0OWsbX5UQus3J2nMkxFfaI/edit?usp=sharing
+  https://docs.google.com/document/d/1Kl6EUQ7HygLLIfQ08IYwd0OWsbX5UQus3J2nMkxFfaI/edit?usp=sharing
 
 ## Prerequisites
 
@@ -217,3 +217,11 @@ Create the folders first if they do not exist:
 ```bash
 mkdir -p data/n8n data/postgres
 ```
+
+# MCP
+
+1. cd mcp-server
+2. run: npm i
+3. run: npm start
+4. go to n8n and connect your MCP server http://localhost:3200/mcp
+5. try it out
