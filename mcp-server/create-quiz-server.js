@@ -191,7 +191,40 @@ export function createQuizMcpServer() { // abstraction
       });
     }
   );
+  registerTrackedTool(
+    server,
+    toolsByName,
+    "test_tool",
+    {
+      description:
+        "just a test tool",
+      inputSchema: z.object({}),
+    },
+    async ({ topicId, afterQuestionId }) => {
+      const topic = getTopic(topicId);
+      if (!topic) {
+        return {
+          content: [{ type: "text", text: JSON.stringify({ error: `Unknown topic: ${topicId}` }) }],
+          isError: true,
+        };
+      }
 
+      const question = getNextQuestion(topicId, afterQuestionId ?? null);
+      if (!question) {
+        return structuredToolResult({
+          done: true,
+          message: `No more questions in topic "${topic.name}".`,
+        });
+      }
+
+      return structuredToolResult({
+        topicId,
+        topicName: topic.name,
+        questionId: question.id,
+        question: question.question,
+      });
+    }
+  );
   registerTrackedTool(
     server,
     toolsByName,

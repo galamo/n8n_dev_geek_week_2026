@@ -1,0 +1,195 @@
+{
+    "nodes": [
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+        "typeVersion": 1.4,
+        "position": [
+          -368,
+          -48
+        ],
+        "id": "33e3dc48-87ea-41cb-8f26-cc1ecad93b35",
+        "name": "When chat message received",
+        "webhookId": "48f3ec1d-6258-47b5-8797-a3f0bec62001"
+      },
+      {
+        "parameters": {
+          "hasOutputParser": true,
+          "options": {
+            "systemMessage": "You are a helpful assistant to extract from the user message few details: \nauthor, repositoryName\nif non of them exist, print MISSING_INFO"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 3.1,
+        "position": [
+          -160,
+          -48
+        ],
+        "id": "668acc07-c07c-4c12-ae1c-cb32a8c7882e",
+        "name": "AI Agent"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+        "typeVersion": 1,
+        "position": [
+          -160,
+          160
+        ],
+        "id": "7aa301a8-f146-445c-ba55-d76129d4b3f7",
+        "name": "OpenRouter Chat Model",
+        "credentials": {
+          "openRouterApi": {
+            "id": "AXPEBx4ueLDx5fLj",
+            "name": "OpenRouter account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsonSchemaExample": "{\n\t\"respositoryName\": \"n8n\",\n\t\"author\": \"galamouyal\"\n}"
+        },
+        "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+        "typeVersion": 1.3,
+        "position": [
+          -16,
+          144
+        ],
+        "id": "2d2f3eed-1ccd-4737-8b00-0c3e2ff1b704",
+        "name": "Structured Output Parser"
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "= {{ $json.output.respositoryName }}\n{{ $json.output.author }}",
+          "options": {
+            "systemMessage": "your target is only printing the information received from the previous agent\n"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 3.1,
+        "position": [
+          192,
+          -48
+        ],
+        "id": "4e3ff880-a42a-48e2-a284-31ca66f03323",
+        "name": "AI Agent1"
+      },
+      {
+        "parameters": {
+          "model": "gemma3:27b",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+        "typeVersion": 1,
+        "position": [
+          192,
+          160
+        ],
+        "id": "578ba2e8-e23b-401f-94b7-fc31f318c62a",
+        "name": "Ollama Chat Model",
+        "credentials": {
+          "ollamaApi": {
+            "id": "NmvQzKyeLrTn7ZED",
+            "name": "Ollama account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "endpointUrl": "http://host.docker.internal:3200/mcp",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+        "typeVersion": 1.2,
+        "position": [
+          336,
+          160
+        ],
+        "id": "2d593a0d-e9ed-4e2a-9190-9ff961988b09",
+        "name": "MCP Client"
+      }
+    ],
+    "connections": {
+      "When chat message received": {
+        "main": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "AI Agent": {
+        "main": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenRouter Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Structured Output Parser": {
+        "ai_outputParser": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_outputParser",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "AI Agent1": {
+        "main": [
+          []
+        ]
+      },
+      "Ollama Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "MCP Client": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "pinData": {},
+    "meta": {
+      "templateCredsSetupCompleted": true,
+      "instanceId": "20cf75cd0417fe5be3c3d8dcf7163bcd4dd5f0947193527bf3d55f850ac76577"
+    }
+  }
