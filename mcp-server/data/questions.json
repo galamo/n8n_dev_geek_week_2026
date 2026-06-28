@@ -1,0 +1,83 @@
+{
+  "topics": {
+    "mcp": {
+      "name": "Model Context Protocol",
+      "questions": [
+        {
+          "id": "mcp-1",
+          "question": "What does MCP stand for?",
+          "answer": "Model Context Protocol"
+        },
+        {
+          "id": "mcp-2",
+          "question": "Name one transport MCP supports for remote servers.",
+          "answer": "Streamable HTTP"
+        },
+        {
+          "id": "mcp-3",
+          "question": "What are the three primitive capabilities MCP servers can expose?",
+          "answer": "tools, resources, and prompts"
+        },
+        {
+          "id": "mcp-3",
+          "question": "What are the three primitive capabilities MCP servers can expose?",
+          "answer": "tools, resources, and prompts"
+        }
+      ]
+    },
+    "langchain": {
+      "name": "LangChain",
+      "questions": [
+        {
+          "id": "lc-1",
+          "question": "What LangChain class wraps an LLM for chat-style messages?",
+          "answer": "ChatOpenAI"
+        },
+        {
+          "id": "lc-2",
+          "question": "What component executes a tool-calling agent loop in LangChain?",
+          "answer": "AgentExecutor"
+        },
+        {
+          "id": "lc-3",
+          "question": "What is used to define variable slots in a LangChain prompt template?",
+          "answer": "MessagesPlaceholder"
+        }
+      ]
+    },
+    "agents": {
+      "name": "AI Agents",
+      "questions": [
+        {
+          "id": "ag-1",
+          "question": "What pattern lets an LLM choose between specialized sub-agents?",
+          "answer": "router agent"
+        },
+        {
+          "id": "ag-2",
+          "question": "What do we call external capabilities an agent can invoke (like MCP tools)?",
+          "answer": "tools"
+        },
+        {
+          "id": "ag-3",
+          "question": "In a ReAct-style agent, what two things alternate in the loop?",
+          "answer": "reasoning and acting"
+        }
+      ]
+    },
+    "sports": {
+      "name": "Sports",
+      "questions": [
+        {
+          "id": "sp-1",
+          "question": "What is the capital of France?",
+          "answer": "Paris"
+        }
+      ]
+    },
+    "test-topic-1782410067356": {
+      "name": "Test Topic",
+      "questions": []
+    }
+  }
+}

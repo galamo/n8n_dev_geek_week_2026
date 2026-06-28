@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galamo Trading Terminal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <header class="top-bar">
+    <div class="brand">
+      <span class="brand-icon">◈</span>
+      <span class="brand-name">GALAMO EXCHANGE</span>
+      <span class="live-badge">LIVE</span>
+    </div>
+    <div class="market-clock">
+      <span id="marketDate">—</span>
+      <span id="marketTime">—</span>
+    </div>
+    <div class="market-status open">MARKET OPEN</div>
+  </header>
+
+  <div class="ticker-wrap">
+    <div class="ticker" id="ticker"></div>
+  </div>
+
+  <main class="terminal">
+    <section class="panel order-panel">
+      <h2>ORDER ENTRY</h2>
+      <div class="order-grid">
+        <div class="field">
+          <label>Symbol</label>
+          <input type="text" value="N8N-FLOW" readonly />
+        </div>
+        <div class="field">
+          <label>Route</label>
+          <input type="text" value="WEBHOOK / EXECUTE" readonly />
+        </div>
+        <div class="field full">
+          <label>Endpoint</label>
+          <input type="text" id="webhookUrl" readonly
+            value="https://galamo.app.n8n.cloud/webhook/6f571108-c9dd-4efe-854e-24b6c61d4910" />
+        </div>
+      </div>
+
+      <button type="button" id="executeBtn" class="execute-btn">
+        <span class="btn-label">EXECUTE ORDER</span>
+        <span class="btn-sub">Trigger workflow via webhook</span>
+      </button>
+
+      <div id="statusBanner" class="status-banner hidden" role="status"></div>
+    </section>
+
+    <section class="panel blotter-panel">
+      <h2>EXECUTION BLOTTER</h2>
+      <div class="blotter-header">
+        <span>TIME</span>
+        <span>EVENT</span>
+        <span>STATUS</span>
+      </div>
+      <ul id="blotter" class="blotter-list"></ul>
+    </section>
+
+    <section class="panel quotes-panel">
+      <h2>MARKET WATCH</h2>
+      <table class="quotes-table">
+        <thead>
+          <tr>
+            <th>SYM</th>
+            <th>LAST</th>
+            <th>CHG</th>
+            <th>%</th>
+          </tr>
+        </thead>
+        <tbody id="quotesBody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Webhook terminal v1.0</span>
+    <span>n8n DevGeekWeek 2026</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
