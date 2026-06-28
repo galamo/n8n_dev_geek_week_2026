@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "n8n": {
+      "type": "sse",
+      "url": "https://galamo.app.n8n.cloud/mcp/sse",
+      "headers": {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyZGU2MmU0NC05M2Y5LTQ4NGEtYmQ5NS1iZDI1ZTU2ODllM2EiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiNTRiNjg5MDctYjYzYi00ZWVlLWI0MjAtMjFhYjljM2M2MDUxIiwiaWF0IjoxNzgyNjI0NDI5LCJleHAiOjE3ODUxODYwMDB9.YrzSVxZA8VP87JY9uZpCoo9hSmudbCVTk0gmAn1yjg4"
+      }
+    }
+  }
+}

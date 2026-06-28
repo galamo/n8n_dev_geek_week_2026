@@ -2,6 +2,10 @@
 
 Self-hosted n8n with Docker Compose and PostgreSQL (or MySQL).
 
+## Openrouter
+
+- https://openrouter.ai/
+
 ## Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Windows, macOS, or Linux)
